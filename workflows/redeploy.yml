@@ -1,0 +1,46 @@
+name: Redeploy Portainer Stacks
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Redeploy all stacks
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/16/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/17/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/18/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/19/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/20/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/21/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/22/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/23/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/24/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/25/git/redeploy?endpointId=3"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.PORTAINER_JWT }}" \
+            "http://<YOUR-IP>:9000/api/stacks/26/git/redeploy?endpointId=3"
