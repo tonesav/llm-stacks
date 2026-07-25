@@ -16,6 +16,9 @@ services:
     ports:
       - "80:80"
       - "8080:8080"   # Traefik dashboard
+    volumes:
+      - /mnt/z/Docker/traefik/dynamic.toml:/etc/traefik/dynamic/dynamic.toml:ro
+
  
     networks:
       - llm_net
