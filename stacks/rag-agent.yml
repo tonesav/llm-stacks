@@ -6,10 +6,6 @@ services:
     container_name: rag-agent
     working_dir: /app
     restart: unless-stopped
-
-    volumes:
-      - ./app:/app
-
     environment:
       OLLAMA_URL: "http://host.docker.internal:11434"
       MEILI_URL: "http://meilisearch:7700"
