@@ -4,8 +4,6 @@ services:
   llm-ui:
     image: nginx:latest
     container_name: llm-ui
-    volumes:
-      - ./app:/usr/share/nginx/html
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.llm-ui.rule=Host(`ui.localhost`)"
