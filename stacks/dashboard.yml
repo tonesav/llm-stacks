@@ -4,9 +4,7 @@ services:
   dashboard:
     image: nginx:latest
     container_name: llm-dashboard
-    volumes:
-      - ./app:/usr/share/nginx/html
-    ports:
+     ports:
       - "8088:80"
     restart: unless-stopped
     networks:
