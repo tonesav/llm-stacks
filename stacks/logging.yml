@@ -3,6 +3,11 @@ version: "3.9"
 services:
   loki:
     image: grafana/loki:2.9.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     container_name: loki
     ports:
       - "3100:3100"
@@ -11,6 +16,11 @@ services:
 
   promtail:
     image: grafana/promtail:2.9.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     container_name: promtail
     volumes:
       - ./promtail-config.yml:/etc/promtail/config.yml
