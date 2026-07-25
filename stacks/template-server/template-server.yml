@@ -1,18 +1,13 @@
 version: "3.9"
+
 services:
   template-server:
-    image: nginx:latest
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+    image: tonesav/template-server:latest
     container_name: template-server
     restart: unless-stopped
-    expose:
-      - "80"
     networks:
       - llm_net
+
 networks:
   llm_net:
     external: true
