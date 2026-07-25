@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  dashboard:
+    image: nginx:latest
+    container_name: llm-dashboard
+    volumes:
+      - ./app:/usr/share/nginx/html
+    ports:
+      - "8088:80"
+    restart: unless-stopped
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true
