@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  template-server:
+    image: nginx:latest
+    container_name: template-server
+    restart: unless-stopped
+
+    volumes:
+      - ./templates.json:/usr/share/nginx/html/templates.json:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+    expose:
+      - "80"
+
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true
