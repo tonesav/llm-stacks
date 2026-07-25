@@ -1,0 +1,31 @@
+[http]
+  [http.routers]
+
+    [http.routers.template-server]
+      rule = "Host(`template.local`)"
+      service = "template-server"
+      entryPoints = ["web"]
+
+    [http.routers.apigateway]
+      rule = "Host(`api.local`)"
+      service = "apigateway"
+      entryPoints = ["web"]
+
+    [http.routers.dashboard]
+      rule = "Host(`dashboard.local`)"
+      service = "dashboard"
+      entryPoints = ["web"]
+
+  [http.services]
+
+    [http.services.template-server.loadBalancer]
+      [[http.services.template-server.loadBalancer.servers]]
+        url = "http://template-server:80"
+
+    [http.services.apigateway.loadBalancer]
+      [[http.services.apigateway.loadBalancer.servers]]
+        url = "http://apigateway:80"
+
+    [http.services.dashboard.loadBalancer]
+      [[http.services.dashboard.loadBalancer.servers]]
+        url = "http://dashboard:80"
