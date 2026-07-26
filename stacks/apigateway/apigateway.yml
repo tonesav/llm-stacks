@@ -1,0 +1,12 @@
+services:
+  apigateway:
+    build .
+    container_name: apigateway
+    ports:
+      -  "8083:8000"
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true

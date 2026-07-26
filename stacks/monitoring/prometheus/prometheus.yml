@@ -1,0 +1,22 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'rag-agent'
+    static_configs:
+      - targets: ['rag-agent:8000']
+
+  - job_name: 'crew-agent'
+    static_configs:
+      - targets: ['crew-agent:8000']
+
+  - job_name: 'api-gateway'
+    static_configs:
+      - targets: ['api-gateway:8000']
+  - job_name: 'traefik'
+    static_configs:
+      - targets: ['traefik:8080']
+
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['host.docker.internal:9323']

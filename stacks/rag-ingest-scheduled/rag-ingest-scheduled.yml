@@ -1,8 +1,8 @@
 version: "3.9"
 services:
-  template-server:
-    image: tonesav/template-server:latest
-    container_name: template-server
+  rag-ingest-scheduled:
+    image: tonesav/rag-ingest-scheduled:latest
+    container_name: rag-ingest-scheduled
     restart: unless-stopped
     networks:
       - llm_net
@@ -10,3 +10,4 @@ services:
 networks:
   llm_net:
     external: true
+

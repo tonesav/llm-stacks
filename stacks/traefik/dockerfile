@@ -1,0 +1,3 @@
+FROM traefik:latest
+COPY dynamic.toml /etc/traefik/dynamic/dynamic.toml
+

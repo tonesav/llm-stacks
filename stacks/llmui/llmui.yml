@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  llmui:
+    build: .
+    container_name: llmui
+    ports:
+      -  "8082:80"
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true

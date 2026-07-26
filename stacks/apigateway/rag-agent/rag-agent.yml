@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  rag-agent:
+    build: .
+    container_name: rag-agent
+    ports:
+      -  "8000:8000
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true
+

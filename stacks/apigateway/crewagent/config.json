@@ -1,0 +1,7 @@
+{
+  "agent_name": "crew-agent",
+  "llm_endpoint": "http://172.22.224.1:11434",
+  "rag_endpoint": "http://rag-agent:8000",
+  "log_endpoint": "http://logging:7000"
+  "model": "llama3.2:latest"
+}

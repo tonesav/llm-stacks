@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  prometheus:
+    image: tonesav/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - llm_net
+
+  grafana:
+    image: tonesav/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true

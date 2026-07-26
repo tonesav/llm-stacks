@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LLM System Dashboard</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #eee; }
+    .card { background: #222; padding: 20px; margin: 20px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Local LLM System Dashboard</h1>
+  <div id="status" class="card">Loading...</div>
+
+  <script>
+    async function loadStatus() {
+      const res = await fetch("http://localhost:8000/status");
+      const data = await res.json();
+      document.getElementById("status").innerHTML =
+        `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    }
+    loadStatus();
+    setInterval(loadStatus, 5000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "services": {
+    "llm": "http://172.22.224.1:11434",
+    "rag_agent": "http://rag-agent:8000",
+    "crew_agent": "http://crewagent:8001"
+  },
+  "auth": {
+    "api_key": "changeme"
+  }
+}

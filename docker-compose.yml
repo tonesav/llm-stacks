@@ -1,0 +1,91 @@
+
+
+networks:
+  llm_net:
+    driver: bridge
+
+services:
+
+  apigateway:
+    build: ./stacks/apigateway
+    ports:
+      - "8083:8000"
+    networks: [llm_net]
+
+  crewagent:
+    build: ./stacks/apigateway/crewagent
+    ports:
+      - "8001:8001"
+    networks: [llm_net]
+
+  rag-agent:
+    build: ./stacks/apigateway/rag-agent
+    ports:
+      - "8000:8000"
+    networks: [llm_net]
+
+  rag_ingest_scheduled:
+    image: tonesav/rag-ingest-scheduled:latest
+    container_name: rag-ingest-scheduled
+    restart: always
+    networks:
+      - llm_net
+
+  dashboard:
+    build: ./stacks/dashboard
+    ports:
+      - "8081:80"
+    networks: [llm_net]
+
+  llmui:
+    build: ./stacks/llmui
+    ports:
+      - "8082:80"
+    networks: [llm_net]
+
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    ports:
+      - "7700:7700"
+    networks: [llm_net]
+
+  traefik:
+    build: ./stacks/traefik
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks: [llm_net]
+
+  prometheus:
+    image: tonesav/prometheus:latest
+    container_name: prometheus
+    restart: always
+    networks:
+      - llm_net
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: tonesav/grafana:latest
+    container_name: grafana
+    restart: always
+    networks:
+      - llm_net
+    ports:
+      - "3000:3000"
+
+  portainer:
+    image: portainer/portainer-ee:latest
+    container_name: portainer
+    restart: always
+    networks:
+      - llm_net
+    ports:
+      - "9443:9443"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:

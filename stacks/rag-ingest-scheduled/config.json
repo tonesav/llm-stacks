@@ -1,0 +1,6 @@
+{
+  "schedule": "0 */6 * * *",
+  "source_folder": "/data/documents",
+  "rag_agent_endpoint": "http://rag-agent:8000",
+  "log_endpoint": "http://logging:7000"
+}

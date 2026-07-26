@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LLM Control Panel</title>
+  <style>
+    body { background:#111; color:#eee; font-family:Arial; }
+    .card { background:#222; padding:20px; margin:20px; border-radius:10px; }
+    input, select { width:80%; padding:10px; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <h1>Local LLM Control Panel</h1>
+
+  <div class="card">
+    <h2>Ask the Supervisor Agent</h2>
+
+    <!-- MODEL DROPDOWN -->
+    <label>Select Model:</label>
+    <select id="model"></select>
+
+    <input id="query" placeholder="Type your request...">
+    <button onclick="ask()">Send</button>
+    <pre id="result"></pre>
+  </div>
+
+  <script>
+    // Load available models from API Gateway
+    async function loadModels() {
+      const res = await fetch("http://api.localhost/models");
+      const data = await res.json();
+
+      const select = document.getElementById("model");
+      data.models.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        select.appendChild(opt);
+      });
+    }
+
+    // Ask supervisor with selected model
+    async function ask() {
+      const q = document.getElementById("query").value;
+      const model = document.getElementById("model").value;
+
+      const res = await fetch(
+        `http://api.localhost/ask?q=${encodeURIComponent(q)}&model=${encodeURIComponent(model)}`
+      );
+
+      const data = await res.json();
+      document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+    }
+
+    // Load models on page load
+    loadModels();
+  </script>
+</body>
+</html>

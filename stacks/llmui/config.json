@@ -1,0 +1,9 @@
+{
+  "api_gateway": "http://apigateway:8000",
+  "rag_agent": "http://rag-agent:8000",
+  "crew_agent": "http://crewagent:8001",
+  "ui": {
+    "title": "LLM UI",
+    "theme": "dark"
+  }
+}

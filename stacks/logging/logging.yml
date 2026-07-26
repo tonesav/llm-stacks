@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  logging:
+    build: .
+    container_name: logging
+    ports:
+      -  "7000:7000"
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true

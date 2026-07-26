@@ -1,0 +1,7 @@
+{
+  "agent_name": "rag-agent",
+  "llm_endpoint": "http://172.22.224.1:11434",
+  "embedding_model": "llama3.2:latest",
+  "vector_store": "http://meilisearch:7700",
+  "log_endpoint": "http://logging:7000"
+}

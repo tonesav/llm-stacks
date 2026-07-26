@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  crewagent:
+    build: .
+    container_name: crewagent
+    ports:
+      -  "8001:8001"
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
+    external: true
+
+
